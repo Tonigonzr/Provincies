@@ -1,4 +1,4 @@
-package com.example.provincies;
+package com.example.provincies.model;
 
 import jakarta.persistence.*;
 @Entity
@@ -12,10 +12,15 @@ public class Ciutat {
     @JoinColumn(name = "provincia_id")
     private Provincia provincia;
 
-    public Ciutat(Long id, String nom, Provincia provincia) {
+    @ManyToOne
+    @JoinColumn(name = "cacaudorciutat_id")
+    private CacauDorCiutat cacauDorCiutat;
+
+    public Ciutat(Long id, String nom, Provincia provincia, CacauDorCiutat cacauDorCiutat) {
         this.id = id;
         this.nom = nom;
         this.provincia = provincia;
+        this.cacauDorCiutat = cacauDorCiutat;
     }
 
     public Long getId() {
@@ -42,12 +47,21 @@ public class Ciutat {
         this.provincia = provincia;
     }
 
+    public CacauDorCiutat getCacauDorCiutat() {
+        return cacauDorCiutat;
+    }
+
+    public void setCacauDorCiutat(CacauDorCiutat cacauDorCiutat) {
+        this.cacauDorCiutat = cacauDorCiutat;
+    }
+
     @Override
     public String toString() {
         return "Ciutat{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", provincia=" + provincia +
+                ", cacauDorCiutat=" + cacauDorCiutat +
                 '}';
     }
 }

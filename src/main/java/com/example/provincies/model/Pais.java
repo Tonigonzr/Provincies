@@ -1,4 +1,4 @@
-package com.example.provincies;
+package com.example.provincies.model;
 
 import jakarta.persistence.*;
 
@@ -52,5 +52,16 @@ public class Pais {
                 ", nom='" + nom + '\'' +
                 ", provincias=" + provincias +
                 '}';
+    }
+
+    @ManyToOne(optional = false)
+    private CacauDor cacauDors;
+
+    public CacauDor getCacauDors() {
+        return cacauDors;
+    }
+
+    public void setCacauDors(CacauDor cacauDors) {
+        this.cacauDors = cacauDors;
     }
 }
